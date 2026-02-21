@@ -171,22 +171,23 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Шаблон отчёта по лабораторной работе},
-  pdfauthor={Дмитрий Сергеевич Кулябов},
+  pdftitle={Лабораторная работа 1},
+  pdfauthor={Осипов Никита Александрович},
   pdflang={ru-RU},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Шаблон отчёта по лабораторной работе}
+\title{Лабораторная работа 1}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{Простейший вариант}
-\author{Дмитрий Сергеевич Кулябов}
+\subtitle{Установка и конфигурация операционной системы на виртуальную
+машину}
+\author{Осипов Никита Александрович}
 \date{}
 \begin{document}
 \maketitle
@@ -203,97 +204,77 @@
 \chapter{Цель
 работы}\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
 
-Здесь приводится формулировка цели лабораторной работы. Формулировки
-цели для каждой лабораторной работы приведены в методических указаниях.
-
-Цель данного шаблона --- максимально упростить подготовку отчётов по
-лабораторным работам. Модифицируя данный шаблон, студенты смогут без
-труда подготовить отчёт по лабораторным работам, а также познакомиться с
-основными возможностями разметки Markdown.
+Целью данной работы является приобретение практических навыков установки
+операционной системы на виртуальную машину, настройки минимально
+необходимых для дальнейшей работы сервисов.
 
 \chapter{Задание}\label{ux437ux430ux434ux430ux43dux438ux435}
 
-Здесь приводится описание задания в соответствии с рекомендациями
-методического пособия и выданным вариантом.
-
-\chapter{Теоретическое
-введение}\label{ux442ux435ux43eux440ux435ux442ux438ux447ux435ux441ux43aux43eux435-ux432ux432ux435ux434ux435ux43dux438ux435}
-
-Здесь описываются теоретические аспекты, связанные с выполнением работы.
-
-Например, в табл.~\ref{tbl-std-dir} приведено краткое описание
-стандартных каталогов Unix.
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1014}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.8986}}@{}}
-\caption{Описание некоторых каталогов файловой системы GNU
-Linux}\label{tbl-std-dir}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Имя каталога
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Описание каталога
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Имя каталога
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Описание каталога
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\texttt{/} & Корневая директория, содержащая всю файловую \\
-\texttt{/bin} & Основные системные утилиты, необходимые как в
-однопользовательском режиме, так и при обычной работе всем
-пользователям \\
-\texttt{/etc} & Общесистемные конфигурационные файлы и файлы
-конфигурации установленных программ \\
-\texttt{/home} & Содержит домашние директории пользователей, которые, в
-свою очередь, содержат персональные настройки и данные пользователя \\
-\texttt{/media} & Точки монтирования для сменных носителей \\
-\texttt{/root} & Домашняя директория пользователя \texttt{root} \\
-\texttt{/tmp} & Временные файлы \\
-\texttt{/usr} & Вторичная иерархия для данных пользователя \\
-\end{longtable}
-
-Более подробно про Unix см. в
-\autocite{tanenbaum_book_modern-os_ru,robbins_book_bash_en,zarrelli_book_mastering-bash_en,newham_book_learning-bash_en}.
+Настроить Virtual Box и поставить на него Rocky OS.
 
 \chapter{Выполнение лабораторной
 работы}\label{ux432ux44bux43fux43eux43bux43dux435ux43dux438ux435-ux43bux430ux431ux43eux440ux430ux442ux43eux440ux43dux43eux439-ux440ux430ux431ux43eux442ux44b}
 
-Описываются проведённые действия, в качестве иллюстрации даётся ссылка
-на иллюстрацию (рис.~\ref{fig-001}).
+Создаем новую виртуальную машину, добавляем образ Rocky boot
 
-\begin{figure}
+Делаем первоначальные настройки
 
-\centering{
+\begin{figure}[H]
 
-\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{image/solvay.jpg}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/1.png}}
 
 }
 
-\caption{\label{fig-001}V Сольвеевский конгресс (1927) «Электроны и
-фотоны»}
+\caption{Настройка виртуального оборудования}
+
+\end{figure}%
+
+После настройки, запускаем виртуальную машину, выбираем загруузочный
+диск, задаем параметры установки.
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/2.png}}
+
+}
+
+\caption{Задание параметров установки}
+
+\end{figure}%
+
+Нажимаем \enquote{Готово} и ждем окончания загрузки. Затем входим в
+систему
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/3.png}}
+
+}
+
+\caption{Первоначальный вход в систему}
+
+\end{figure}%
+
+Выполняем дополнительные задания
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/4.png}}
+
+}
+
+\caption{Просмотр параметров виртуальной машины}
 
 \end{figure}%
 
 \chapter{Выводы}\label{ux432ux44bux432ux43eux434ux44b}
 
-Здесь кратко описываются итоги проделанной работы.
-
-\chapter*{Список
-литературы}\label{ux441ux43fux438ux441ux43eux43a-ux43bux438ux442ux435ux440ux430ux442ux443ux440ux44b}
-\addcontentsline{toc}{chapter}{Список литературы}
-
-\printbibliography[heading=none]
+Я приобрел практические навыки установки операционной системы на
+виртуальную машину, настройки минимально необходимых для дальнейшей
+работы сервисов.
 
 
+\printbibliography
 
 
 
