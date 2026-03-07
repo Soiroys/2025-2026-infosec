@@ -1,0 +1,371 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+  aspectratio=169,
+  russian,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolshorizontal
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic,provide=*]{babel}
+\else
+\usepackage[bidi=default,provide=*]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+\usepackage[]{csquotes}
+
+\IfFileExists{plex-otf.sty}{
+  %% Full TeXlive
+  % \usepackage[%
+  %   % math,
+  %   RM={Scale=0.94},SS={Scale=0.94},SScon={Scale=0.94},TT={Scale=MatchLowercase,FakeStretch=0.9},DefaultFeatures={Ligatures=Common}
+  % ]{plex-otf}
+}{
+  %% TinyTeX
+  \usepackage{libertine}
+}
+
+%%% Load theme
+% https://deic.uab.cat/~iblanes/beamer_gallery/
+\IfFileExists{beamerthemegotham.sty}{
+  %% Full TeXlive
+  \usetheme{gotham}
+  \gothamset{
+    numbering=totalpagenumber,
+    parttocframe default=off,
+    sectiontocframe default=off,
+    subsectiontocframe default=off,
+  }
+}{
+  %% TinyTeX
+  \usetheme{Madrid}
+}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Содержание}
+\else
+  \newcommand\contentsname{Содержание}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Список иллюстраций}
+\else
+  \newcommand\listfigurename{Список иллюстраций}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Список таблиц}
+\else
+  \newcommand\listtablename{Список таблиц}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Рисунок}
+\else
+  \newcommand\figurename{Рисунок}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Таблица}
+\else
+  \newcommand\tablename{Таблица}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Список}
+\newcommand*\listoflistings{\listof{codelisting}{Листинги}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Лабораторная работа 2},
+  pdfauthor={Осипов Никита Александрович},
+  pdflang={ru-RU},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Лабораторная работа 2}
+\subtitle{Дискреционное разграничение прав в Linux. Основные атрибуты}
+\author{Осипов Никита Александрович}
+\date{2026-03-07}
+
+\begin{document}
+\frame{\titlepage}
+
+\renewcommand*\contentsname{Содержание}
+\begin{frame}[allowframebreaks]
+  \frametitle{Содержание}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+\end{frame}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\section{Информация}\label{ux438ux43dux444ux43eux440ux43cux430ux446ux438ux44f}
+
+\begin{frame}{Докладчик}
+\phantomsection\label{ux434ux43eux43aux43bux430ux434ux447ux438ux43a}
+\begin{columns}[c]
+\begin{column}{0.7\linewidth}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Осипов Никита Александрович
+\item
+  Студент группы НКАбд-04-24
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Вводная часть}
+\phantomsection\label{ux432ux432ux43eux434ux43dux430ux44f-ux447ux430ux441ux442ux44c}
+\end{frame}
+
+\section{Цель
+работы}\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+
+\begin{frame}{Цель работы}
+Получение практических навыков работы в консоли с атрибутами файлов,
+закрепление теоретических основ дискреционного разграничения доступа в
+современных системах с открытым кодом на базе ОС Linux.
+
+::: \# Задание
+
+Постарайтесь последовательно выполнить все пункты, занося ваши ответы на
+поставленные вопросы и замечания в отчёт. 1. В установленной при
+выполнении предыдущей лабораторной работы операционной системе создайте
+учётную запись пользователя guest (использую учётную запись
+администратора): useradd guest 2. Задайте пароль для пользователя guest
+(использую учётную запись администратора): passwd guest 3. Войдите в
+систему от имени пользователя guest. 4. Определите директорию, в которой
+вы находитесь, командой pwd. Сравните её с приглашением командной
+строки. Определите, является ли она вашей домашней директорией? Если
+нет, зайдите в домашнюю директорию. 5. Уточните имя вашего пользователя
+командой whoami. 6. Уточните имя вашего пользователя, его группу, а
+также группы, куда входит пользователь, командой id. Выведенные значения
+uid, gid и др. запомните. Сравните вывод id с выводом команды groups. 7.
+Сравните полученную информацию об имени пользователя с данными,
+выводимыми в приглашении командной строки. 8. Просмотрите файл
+/etc/passwd командой cat /etc/passwd Найдите в нём свою учётную запись.
+Определите uid пользователя. Определите gid пользователя. Сравните
+найденные значения с полученными в предыдущих пунктах. Замечание: в
+случае, когда вывод команды не умещается на одном экране монитора,
+используйте прокрутку вверх--вниз (удерживая клавишу shift, нажимайте
+page up и page down) либо программу grep качестве фильтра для вывода
+только строк, содержащих определённые буквенные сочетания: cat
+/etc/passwd \textbar{} grep guest 9. Определите существующие в системе
+директории командой ls -l /home/ Удалось ли вам получить список
+поддиректорий директории /home? Какие права установлены на директориях?
+10. Проверьте, какие расширенные атрибуты установлены на поддиректориях,
+находящихся в директории /home, командой: lsattr /home Удалось ли вам
+увидеть расширенные атрибуты директории? Удалось ли вам увидеть
+расширенные атрибуты директорий других пользователей? 11. Создайте в
+домашней директории поддиректорию dir1 командой mkdir dir1 Определите
+командами ls -l и lsattr, какие права доступа и расширенные атрибуты
+были выставлены на директорию dir1. 12. Снимите с директории dir1 все
+атрибуты командой chmod 000 dir1 и проверьте с её помощью правильность
+выполнения команды ls -l 13. Попытайтесь создать в директории dir1 файл
+file1 командой echo \enquote{test} \textgreater{} /home/guest/dir1/file1
+Объясните, почему вы получили отказ в выполнении операции по созданию
+файла? Оцените, как сообщение об ошибке отразилось на создании файла?
+Проверьте командой ls -l /home/guest/dir1 действительно ли файл file1 не
+находится внутри директории dir1. 14. Заполните таблицу «Установленные
+права и разрешённые действия» (см. табл. 2.1), выполняя действия от
+имени владельца директории (файлов), определив опытным путём, какие
+операции разрешены, а какие нет. Если операция разрешена, занесите в
+таблицу знак «+», если не разрешена, знак «-». Замечание 1: при
+заполнении табл. 2.1 рассматриваются не все атрибуты файлов и
+директорий, а лишь «первые три»: г, w, х, для «владельца». Остальные
+атрибуты также важны (особенно при использовании доступа от имени разных
+пользователей, входящих в те или иные группы). Проверка всех атрибутов
+при всех условиях значительно увеличила бы таблицу: так 9 атрибутов на
+директорию и 9 атрибутов на файл дают 218 строк без учёта дополнительных
+атрибутов, плюс таблица была бы расширена по количеству столбцов, так
+как все приведённые операции необходимо было бы повторить ещё как
+минимум для двух пользователей: входящего в группу владельца файла и не
+входящего в неё. После полного заполнения табл. 2.1 и анализа полученных
+данных нам удалось бы выяснить, что заполнение её в таком виде излишне.
+Можно разделить большую таблицу на несколько малых независимых таблиц. В
+данном примере предлагается рассмотреть 3 + 3 атрибута, т.е. 2 6 = 64
+варианта
+
+::: \# Выполнение лабораторной работы
+
+\begin{enumerate}[<+->]
+\tightlist
+\item
+  Создаем гостевую учетную запись и задаем ей пароль через командую
+  строку.
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/1.png}}
+
+}
+
+\caption{Создание гостевой учетной записи}
+
+\end{figure}%
+
+\begin{enumerate}[<+->]
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Заходим в гостевую запись и проверяем базовые параметры
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/2.png}}
+
+}
+
+\caption{Проверка учетной записи}
+
+\end{figure}%
+
+\begin{enumerate}[<+->]
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Создаем папку и проверяем доступ к ней
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{image/3.png}}
+
+}
+
+\caption{Проверка}
+
+\end{figure}%
+
+::: \# Выводы
+
+Я получил практические навыки работы в консоли с атрибутами файлов,
+закрепил теоретические основы дискреционного разграничения доступа в
+современных системах с открытым кодом на базе ОС Linux.
+
+:::
+\end{frame}
+
+
+
+
+\end{document}
