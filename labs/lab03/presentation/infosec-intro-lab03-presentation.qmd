@@ -33,7 +33,7 @@ date-format: "YYYY-MM-DD" # Example: 2025-09-06
   * <https://github.com/Soiroys/2025-2026-infosec>
 
 :::
-::: {.column width="30%"}
+:::
 
 :::
 ::::::::::::::
