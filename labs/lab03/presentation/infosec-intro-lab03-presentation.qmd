@@ -2,7 +2,7 @@
 ## Author
 author:
   name: Осипов Никита Александрович
-  degrees: DSc
+  degrees: Student
   orcid: 0000-0002-0877-7063
   email: 1132242906@rudn.ru
   affiliation:
