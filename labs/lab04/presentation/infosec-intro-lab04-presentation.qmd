@@ -46,7 +46,7 @@ date-format: "YYYY-MM-DD" # Example: 2025-09-06
 
 ## Выполнение работы
 
-![Выполнение работы guest](1.png)
-![Выполнение работы guest](2.png)
-![Выполнение работы root](3.png)
+![Выполнение работы guest](image/1.png)
+![Выполнение работы guest](image/2.png)
+![Выполнение работы root](image/3.png)
 
